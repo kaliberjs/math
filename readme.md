@@ -25,7 +25,7 @@ Linearly interpolates between points.
 | --- | --- | --- |
 | `start` | `Number` | Start of the input range. |
 | `end` | `Number` | End of the input range. |
-| `input` | `Number` | Input (usually between `0` and `1`), indicating where to interpolate. |
+| `input` | `Number` | Value between `0` and `1` if you want to stay between `start` and `end`, indicating where to interpolate. |
 | `clamp` | `Boolean` (default is `false`) | Whether to clamp the output value between the `start` and `end` values. |
 
 ```js
