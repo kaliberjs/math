@@ -25,7 +25,7 @@ Linearly interpolates between points.
 | --- | --- | --- |
 | `start` | `Number` | Start of the input range. |
 | `end` | `Number` | End of the input range. |
-| `input` | `Number` | Value between `0` and `1` if you want to stay between `start` and `end`, indicating where to interpolate. |
+| `input` | `Number` | Value indicating where to interpolate. If you want your result to lie between `start` and `end`, you should provide an input between `0` and `1`. |
 | `clamp` | `Boolean` (default is `false`) | Whether to clamp the output value between the `start` and `end` values. |
 
 ```js
@@ -41,7 +41,7 @@ Normalizes a number to a value between 0 and 1, given an input range.
 | --- | --- | --- |
 | `start` | `Number` | Start of the input range. |
 | `end` | `Number` | End of the input range. |
-| `input` | `Number` | The value to normalize. |
+| `input` | `Number` | The value to normalize. If the given input lies between `start` and `end`, your output value will always be between `0` and `1`.  |
 | `clamp` | `Boolean` (default is `false`) | Whether to clamp the output value between `0` and `1`. |
 
 ```js
