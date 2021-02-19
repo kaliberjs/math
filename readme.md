@@ -69,8 +69,11 @@ const clamped = clamp({ min: 0, max: 1, input: normalizedMouseX })
 `lerp` and `unlerp` are exact opposites. This fact can help you build some intuition around them:
 
 ```js
-d === lerp({ start: a, end: b, input: c })
-c === unlerp({ start: a, end: b, input: d })
+  lerp({ start: 0, end: 10, input: 0.7 }) === 7
+unlerp({ start: 0, end: 10, input: 7   }) === 0.7
+
+  lerp({ start: a, end: b, input: c }) === d
+unlerp({ start: a, end: b, input: d }) === c
 ```
 
 They are often applied in tandem to remap values:
