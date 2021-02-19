@@ -63,9 +63,6 @@ Constrain a number between two boundary values. The boundary arguments are calle
 const clamped = clamp({ min: 0, max: 1, input: normalizedMouseX })
 ```
 
-```js
-const clamped = clamp({ min: 1, max: 0, input: Math.random() })
-```
 ## Common usecases
 
 ### `lerp` & `unlerp`
