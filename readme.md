@@ -63,6 +63,21 @@ Constrain a number between two boundary values. The boundary arguments are calle
 const clamped = clamp({ min: 0, max: 1, input: normalizedMouseX })
 ```
 
+### `sequence`
+`sequence(length: number)`
+
+Return an array of `length` consequtive numbers, starting with `0`.
+
+| Argument | Type |  |
+| --- | --- | --- |
+| `length` | `Number` | The length of the sequence |
+
+```js
+sequence(10).map(index => {
+  // ...
+})
+```
+
 ## Common usecases
 
 ### `lerp` & `unlerp`
@@ -103,6 +118,22 @@ const { ref: viewportPositionRef } = useNormalizedPositionInViewport({
     })
   }
 })
+      
+```
+
+### `sequence`
+`sequence` is often useful in React if you want to render `n` items, but your starting point is a number:
+
+```js
+const amountOfItems = 5
+
+return (
+  <ul>
+    {sequence(amountOfItems).map(i => (
+      <li>Item {i + 1}</li>
+    ))}
+  </ul>
+)
       
 ```
 
