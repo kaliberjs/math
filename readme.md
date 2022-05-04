@@ -63,6 +63,19 @@ Constrain a number between two boundary values. The boundary arguments are calle
 const clamped = clamp({ min: 0, max: 1, input: normalizedMouseX })
 ```
 
+### `pseudoRandom`
+`pseudoRandom(seed: string | number)`
+
+Deterministically generate a (seemingly) random number, based on the input `seed`. Will always return the same number, given the same `seed`.
+
+| Argument | Type |  |
+| --- | --- | --- |
+| `seed` | `String \| Number` | A number |
+
+```js
+const seeminglyRandom = pseudoRandom('hello world')
+```
+
 ## Common usecases
 
 ### `lerp` & `unlerp`
@@ -103,6 +116,16 @@ const { ref: viewportPositionRef } = useNormalizedPositionInViewport({
     })
   }
 })
+      
+```
+
+### `pseudoRandom`
+Sometimes you want elements to appear random, but they shouldn't really change. In this case, you can use a pseudo random number. Returns a number between `0` and `1`, including `0` but excluding `1`.
+
+```js
+<div>
+  {items.map(x => <Item rotation={lerp(-10, 10, pseudoRandom(x.id))} />)}
+</div>
       
 ```
 
