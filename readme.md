@@ -15,6 +15,10 @@ yarn add @kaliber/math
 1. [`lerp`](#lerp)
 2. [`unlerp`](#unlerp)
 3. [`clamp`](#clamp)
+4. [`sequence`](#sequence)
+5. [`pseudoRandom`](#pseudo-random)
+
+[Common usecases](#common-usecases)
 
 ### `lerp`
 `lerp({ start: number, end: number, amount: number, clamp: boolean = false })`
@@ -63,6 +67,21 @@ Constrain a number between two boundary values. The boundary arguments are calle
 const clamped = clamp({ min: 0, max: 1, input: normalizedMouseX })
 ```
 
+### `sequence`
+`sequence(length: number)`
+
+Return an array of `length` consequtive numbers, starting with `0`.
+
+| Argument | Type |  |
+| --- | --- | --- |
+| `length` | `Number` | The length of the sequence |
+
+```js
+sequence(10).map(index => {
+  // ...
+})
+```
+
 ### `pseudoRandom`
 `pseudoRandom(seed: string | number)`
 
@@ -74,7 +93,6 @@ Deterministically generate a (seemingly) random number, based on the input `seed
 
 ```js
 const seeminglyRandom = pseudoRandom('hello world')
-```
 
 ## Common usecases
 
@@ -119,6 +137,21 @@ const { ref: viewportPositionRef } = useNormalizedPositionInViewport({
       
 ```
 
+### `sequence`
+`sequence` is often useful in React if you want to render `n` items, but your starting point is a number:
+
+```js
+const amountOfItems = 5
+
+return (
+  <ul>
+    {sequence(amountOfItems).map(i => (
+      <li>Item {i + 1}</li>
+    ))}
+  </ul>
+)   
+```
+
 ### `pseudoRandom`
 Sometimes you want elements to appear random, but they shouldn't really change. In this case, you can use a pseudo random number. Returns a number between `0` and `1`, including `0` but excluding `1`.
 
@@ -126,7 +159,6 @@ Sometimes you want elements to appear random, but they shouldn't really change. 
 <div>
   {items.map(x => <Item rotation={lerp(-10, 10, pseudoRandom(x.id))} />)}
 </div>
-      
 ```
 
 -----
