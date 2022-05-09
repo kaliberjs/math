@@ -18,7 +18,7 @@ export function randomNumberGenerator(seed) {
 export function pseudoRandom(seed) {
   const salt = '6555705619766379'
   const randomNumber = randomNumberGenerator(salt + seed)
-  return randomNumber() / 4294967296
+  return randomNumber()
 }
 
 // https://stackoverflow.com/questions/521295/seeding-the-random-number-generator-in-javascript/47593316#47593316
