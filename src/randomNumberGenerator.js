@@ -2,7 +2,7 @@
  * Return pseudo random number generator. Given the same seed, this function will always 
  * return the same sequence of random numbers.
  * @param {string|number} seed - The seed the number generator is based on
- * @returns {number} - A number between 0 (inclusive) and 1 (exclusive)
+ * @returns {function} - A number between 0 (inclusive) and 1 (exclusive)
  */
 export function randomNumberGenerator(seed) {
   const random = xmur3(String(seed))
