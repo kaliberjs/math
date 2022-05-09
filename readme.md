@@ -16,12 +16,13 @@ yarn add @kaliber/math
 2. [`unlerp`](#unlerp)
 3. [`clamp`](#clamp)
 4. [`sequence`](#sequence)
-5. [`pseudoRandom`](#pseudo-random)
+5. [`randomNumberGenerator`](#random-number-generator)
+6. [`pseudoRandom`](#pseudo-random)
 
 [Common usecases](#common-usecases)
 
 ### `lerp`
-`lerp({ start: number, end: number, amount: number, clamp: boolean = false })`
+`lerp({ start: number, end: number, amount: number, clamp: boolean = false }): number`
 
 Linearly interpolates between points.
 
@@ -53,7 +54,7 @@ const normalizedMouseX = unlerp({ start: 0, end: window.innerWidth, input: mouse
 ```
 
 ### `clamp`
-`clamp({ min: number, max: number, input: number })`
+`clamp({ min: number, max: number, input: number }) : number`
 
 Constrain a number between two boundary values. The boundary arguments are called `min` and `max` to make them easy to memorize, but swapping them has no consequences.
 
@@ -68,7 +69,7 @@ const clamped = clamp({ min: 0, max: 1, input: normalizedMouseX })
 ```
 
 ### `sequence`
-`sequence(length: number)`
+`sequence(length: number) : array`
 
 Return an array of `length` consequtive numbers, starting with `0`.
 
@@ -82,17 +83,40 @@ sequence(10).map(index => {
 })
 ```
 
-### `pseudoRandom`
-`pseudoRandom(seed: string | number)`
+### `randomNumberGenerator`
+`randomNumberGenerator(seed: string | number) : function`
 
-Deterministically generate a (seemingly) random number, based on the input `seed`. Will always return the same number, given the same `seed`.
+Creates a random number generator that deterministically generates a 
+(seemingly) random number, based on the input `seed`. Will always return the 
+same sequence of numbers, given the same `seed`. The output values fall between
+0 (inclusive) and 1 (exclusive). 
 
 | Argument | Type |  |
 | --- | --- | --- |
-| `seed` | `String \| Number` | A number |
+| `seed` | `String \| Number` | A string or number |
 
 ```js
-const seeminglyRandom = pseudoRandom('hello world')
+const random = randomNumberGenerator('hello world')
+```
+
+### `pseudoRandom`
+`pseudoRandom(seed: string | number) : number`
+
+Deterministically generate a (seemingly) random number. Uses 
+`randomNumberGenerator` internally, based on the input `seed`. Will always 
+return the same number, given the same `seed`. The output value falls between
+0 (inclusive) and 1 (exclusive).
+
+The seed is salted, to make sure the first value returned by a 
+`randomNumberGenerator` generator is different, given the same seed.
+
+| Argument | Type |  |
+| --- | --- | --- |
+| `seed` | `String \| Number` | A string or number |
+
+```js
+const seeminglyRandomNumber = pseudoRandom('hello world')
+```
 
 ## Common usecases
 
