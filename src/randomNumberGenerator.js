@@ -16,7 +16,8 @@ export function randomNumberGenerator(seed) {
  * @returns {number} - A number between 0 (inclusive) and 1 (exclusive)
  */
 export function pseudoRandom(seed) {
-  const randomNumber = randomNumberGenerator(seed)
+  const salt = '6555705619766379'
+  const randomNumber = randomNumberGenerator(salt + seed)
   return randomNumber() / 4294967296
 }
 
