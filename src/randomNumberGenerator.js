@@ -23,10 +23,9 @@ export function pseudoRandom(seed) {
 // https://stackoverflow.com/questions/521295/seeding-the-random-number-generator-in-javascript/47593316#47593316
 // Hash function that generates high entropy 32 bit number (unsigned)
 function xmur3(str) {
-  let i = 0
   let h = 1779033703 ^ str.length
 
-  for (; i < str.length; i++) {
+  for (let i = 0; i < str.length; i++) {
     h = Math.imul(h ^ str.charCodeAt(i), 3432918353)
     h = h << 13 | h >>> 19
   }
