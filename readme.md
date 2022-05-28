@@ -1,5 +1,5 @@
 # @kaliber/math
-A set of useful math functions! 
+A set of useful math functions!
 
 ## Motivation
 Some math problems are just way easier to reason about if you have access to some higher level abstractions. This library provides some of these abstractions in a clear, consistent API.
@@ -86,10 +86,10 @@ sequence(10).map(index => {
 ### `randomNumberGenerator`
 `randomNumberGenerator(seed: string | number) : function`
 
-Creates a random number generator that deterministically generates a 
-(seemingly) random number, based on the input `seed`. Will always return the 
+Creates a random number generator that deterministically generates a
+(seemingly) random number, based on the input `seed`. Will always return the
 same sequence of numbers, given the same `seed`. The output values fall between
-0 (inclusive) and 1 (exclusive). 
+0 (inclusive) and 1 (exclusive).
 
 | Argument | Type |  |
 | --- | --- | --- |
@@ -102,12 +102,12 @@ const random = randomNumberGenerator('hello world')
 ### `pseudoRandom`
 `pseudoRandom(seed: string | number) : number`
 
-Deterministically generate a (seemingly) random number. Uses 
-`randomNumberGenerator` internally, based on the input `seed`. Will always 
+Deterministically generate a (seemingly) random number. Uses
+`randomNumberGenerator` internally, based on the input `seed`. Will always
 return the same number, given the same `seed`. The output value falls between
 0 (inclusive) and 1 (exclusive).
 
-The seed is salted, to make sure the first value returned by a 
+The seed is salted, to make sure the first value returned by a
 `randomNumberGenerator` generator is different, given the same seed.
 
 | Argument | Type |  |
@@ -135,7 +135,7 @@ They are often applied in tandem to remap values:
 
 ```js
 // Input
-const normalizedMouseX = normalize({ start: 0, end: window.innerWidth, input: mouseX })
+const normalizedMouseX = unlerp({ start: 0, end: window.innerWidth, input: mouseX })
 
 // Output
 const rotZ = lerp({ start: -20, end: 20, input: normalizedMouseX })
@@ -158,7 +158,6 @@ const { ref: viewportPositionRef } = useNormalizedPositionInViewport({
     })
   }
 })
-      
 ```
 
 ### `sequence`
@@ -173,7 +172,7 @@ return (
       <li>Item {i + 1}</li>
     ))}
   </ul>
-)   
+)
 ```
 
 ### `pseudoRandom`
@@ -190,6 +189,6 @@ Sometimes you want elements to appear random, but they shouldn't really change. 
 ![](https://media.giphy.com/media/3o7btPCcdNniyf0ArS/giphy.gif)
 
 ## Disclaimer
-This library is intended for internal use, we provide __no__ support, use at your own risk. 
+This library is intended for internal use, we provide __no__ support, use at your own risk.
 
 This library is not transpiled.
